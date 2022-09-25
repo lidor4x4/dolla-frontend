@@ -7,7 +7,6 @@ import {IoTrashOutline} from "react-icons/io5"
 import {FiClipboard} from "react-icons/fi"
 
 export default function Home() {
-    const [userID, setUserID] = useState("")
     const [snippets, setSnippets] = useState()
     const [loading , setLoading] = useState(true);
     const [showCreateForm, setShowCreateForm] = useState('opacity-0');
@@ -23,7 +22,6 @@ export default function Home() {
         headers: {'Authorization': `Bearer ${localStorage.getItem("token")}`}
       }
       Axios.get("https://dolla-backend.herokuapp.com/api/users/me", config).then(res => {
-        setUserID(res.data.id)
       }).catch(error => {
         window.location.href = "/accounts/register"
       })
@@ -99,23 +97,6 @@ export default function Home() {
     });
   }
 
-  const submitDeleteSnippet = () => {
-
-    confirmAlert({
-      title: <FaExclamationCircle />,
-      message: 'Are you sure you want to delete this snippet?',
-      buttons: [
-        {
-          label: 'Yes',
-          onClick: () => delateUserSnippet()
-        },
-        {
-          label: 'No',
-          
-        }
-      ]
-    });
-  }
 
   
 
