@@ -19,7 +19,7 @@ export default function Home() {
         window.location.href = "/accounts/register"
       }
       const config = {
-        headers: {'Authorization': `Bearer ${localStorage.getItem("token")}`}
+        headers: {'Authorization': `Bearer ${localStorage.getItem("token")}`, 'Access-Control-Allow-Origin' : '*',}
       }
       Axios.get("https://dolla-backend.herokuapp.com/api/users/me", config).then(res => {
       }).catch(error => {
@@ -29,7 +29,7 @@ export default function Home() {
   
     const getUserSnippets =() => {
       const config = {
-        headers: {'Authorization': `Bearer ${localStorage.getItem("token")}`}
+        headers: {'Authorization': `Bearer ${localStorage.getItem("token")}`, 'Access-Control-Allow-Origin' : '*'}
       }
       Axios.get("https://dolla-backend.herokuapp.com/api/snippets/get-mine", config).then(res => {  
       setSnippets(res.data.snippets);
@@ -47,7 +47,7 @@ export default function Home() {
 
   const createSnippet = () => {
     const config = {
-      headers: {'Authorization': `Bearer ${localStorage.getItem("token")}`}
+      headers: {'Authorization': `Bearer ${localStorage.getItem("token")}`, 'Access-Control-Allow-Origin' : '*'}
     }
     const bodyParameters = {
       title,
@@ -64,7 +64,7 @@ export default function Home() {
   }  
   const delateAllUserSnippets = () => {
     const config = {
-      headers: {'Authorization': `Bearer ${localStorage.getItem("token")}`}
+      headers: {'Authorization': `Bearer ${localStorage.getItem("token")}`, 'Access-Control-Allow-Origin' : '*'}
     }
     
     Axios.delete("https://dolla-backend.herokuapp.com/api/snippets/delete-mine", config).then((req) => {
@@ -76,7 +76,7 @@ export default function Home() {
 
   const delateUserSnippet = (id) => {
     console.log(id)
-    Axios.delete("https://dolla-backend.herokuapp.com/api/snippets/delete-snippet", { data: { id: id }, headers: { "Authorization": `Bearer ${localStorage.getItem("token")}` } }).then(() => {window.location.reload()})
+    Axios.delete("https://dolla-backend.herokuapp.com/api/snippets/delete-snippet", { data: { id: id }, headers: { "Authorization": `Bearer ${localStorage.getItem("token")}` , 'Access-Control-Allow-Origin' : '*' } }).then(() => {window.location.reload()})
   }
 
   const submitDeleteAll = () => {

@@ -8,7 +8,7 @@ export default function Login() {
   
     const handleSignUp = () => {
         const config = {
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 'Content-Type': 'application/json' , 'Access-Control-Allow-Origin' : '*'},
             email,
             password
         }
